@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Lifecycle from "./components/Lifecycle";
+import Input from "./components/Input";
 
 class App extends Component {
+  state = {
+    initialCount: 1
+  }
+
+  handleClick = (value) => {
+    this.setState({
+      initialCount: parseInt(value)
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Lifecycle initialCount={this.state.initialCount}/>
+        <Input value={this.state.initialCount} handleClick={this.handleClick}/>
       </div>
     );
   }
